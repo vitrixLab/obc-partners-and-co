@@ -4,7 +4,7 @@
 
 // ── Hero ─────────────────────────────────────────────────────────
 export const heroContent = {
-  headline: 'Spatial Intelligence & Private Counsel for Generational Estates',
+  headline: 'Private Counsel for Generational Estates',
   subheadline:
     'OBC Partner & Co delivers institutional‑grade spatial counsel for corporate, institutional, and private clients. We originate opportunities, balance strategy, and curate outcomes – thinking through every detail before you build.',
   primaryCta: 'Schedule Confidential Consultation',

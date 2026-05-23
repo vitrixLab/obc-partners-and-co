@@ -33,11 +33,11 @@ const iconMap: Record<string, React.JSX.Element> = {
 export default function Benefits() {
   return (
     <section id="benefits" className="relative py-36 md:py-44 bg-[#fafaf8] overflow-hidden">
-      {/* Subtle top ornamental rule — Ayala hallmark */}
+      {/* Subtle top ornamental rule */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-[#c4a962]" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        {/* ── Section Header ── */}
+        {/* Section Header */}
         <div className="text-center mb-24 md:mb-32">
           <span className="inline-block text-xs tracking-[.25em] uppercase text-[#c4a962] mb-5 font-medium">
             Our Distinction
@@ -47,7 +47,7 @@ export default function Benefits() {
           </h2>
         </div>
 
-        {/* ── Alternating Rows — Editorial Layout ── */}
+        {/* Alternating Rows — Editorial Layout */}
         <div className="space-y-28 md:space-y-36">
           {benefits.map((b, idx) => {
             const isEven = idx % 2 === 0;
@@ -60,7 +60,11 @@ export default function Benefits() {
                 } items-center gap-10 md:gap-20`}
               >
                 {/* Number / Icon Column */}
-                <div className={`flex-shrink-0 flex flex-col items-center md:items-start ${isEven ? '' : 'md:items-end'} w-full md:w-48`}>
+                <div
+                  className={`flex-shrink-0 flex flex-col items-center ${
+                    isEven ? 'md:items-start' : 'md:items-end'
+                  } w-full md:w-48`}
+                >
                   {/* Thin vertical rule */}
                   <div className="hidden md:block w-[1px] h-16 bg-[#d4c5a0] mb-6" />
                   {/* Icon in a refined circle */}
@@ -74,12 +78,12 @@ export default function Benefits() {
                 </div>
 
                 {/* Content Column */}
-                <div className={`flex-1 text-center md:text-left ${isEven ? '' : 'md:text-right'}`}>
+                <div className="flex-1 text-center md:text-left">
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#1a1a1a] mb-5 tracking-tight">
                     {b.title}
                   </h3>
-                  {/* Thin ornamental rule under title */}
-                  <div className={`w-12 h-[1px] bg-[#c4a962]/50 mb-6 ${isEven ? 'mx-auto md:mx-0' : 'mx-auto md:mr-0 md:ml-auto'}`} />
+                  {/* Thin ornamental rule under title — always left aligned */}
+                  <div className="w-12 h-[1px] bg-[#c4a962]/50 mb-6 mx-auto md:mx-0" />
                   <p className="text-base md:text-lg text-[#6b6b6b] leading-relaxed max-w-lg mx-auto md:mx-0">
                     {b.description}
                   </p>
