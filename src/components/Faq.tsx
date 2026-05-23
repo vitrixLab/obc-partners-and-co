@@ -1,42 +1,40 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { faqContent } from '@/data/content';
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
-
+  
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-darkgray mb-12 text-center">
+    <section className="py-32 bg-white">
+      <div className="max-w-3xl mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-graphite mb-16 text-center">
           Frequently Asked Questions
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqContent.map((item, idx) => (
-            <div key={idx} className="border border-gray-200 rounded-lg">
+            <div key={idx} className="border border-stone/50 rounded-md overflow-hidden">
               <button
-                onClick={() => toggle(idx)}
-                className="w-full flex justify-between items-center p-4 text-left font-medium text-darkgray hover:bg-gray-50 transition-colors"
+                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                className="w-full flex justify-between items-center p-5 text-left font-medium text-graphite hover:bg-stone/20 transition-colors"
               >
                 <span>{item.question}</span>
                 <svg
-                  className={`w-5 h-5 transform ${openIndex === idx ? 'rotate-180' : ''}`}
+                  className={`w-5 h-5 transform transition-transform duration-300 ${openIndex === idx ? 'rotate-45' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
               </button>
-              {openIndex === idx && (
-                <div className="px-4 pb-4 text-gray-600">
-                  {item.answer}
-                </div>
-              )}
+              <div
+                className={`transition-all duration-300 ease-in-out ${
+                  openIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="px-5 pb-5 text-muted leading-relaxed">{item.answer}</div>
+              </div>
             </div>
           ))}
         </div>
