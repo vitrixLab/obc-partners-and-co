@@ -13,9 +13,12 @@ export default function CaseStudies() {
               key={idx}
               className="snap-start shrink-0 w-full md:w-[380px] bg-stone/20 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              {/* Placeholder image */}
-              <div className="h-48 bg-graphite/10 flex items-center justify-center text-muted text-sm">
-                [Image: {cs.client}]
+              {/* Card image – fixed height with background image and Ken Burns effect */}
+              <div className="h-48 relative bg-graphite/10">
+                <div
+                  className="absolute inset-0 bg-cover bg-center motion-safe:animate-kenburns"
+                  style={{ backgroundImage: `url(${cs.image})` }}
+                />
               </div>
               <div className="p-6">
                 <div className="text-xs tracking-widest uppercase text-accent mb-2">{cs.industry}</div>
