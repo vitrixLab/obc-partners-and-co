@@ -3,7 +3,7 @@ import { heroContent } from '@/data/content';
 export default function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background image – replace with real photo later */}
+      {/* Background image – replace with your own .avif / .jpg */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/hero-architecture.avif')" }}
@@ -20,9 +20,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 text-center text-white">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-8 tracking-wide animate-fade-up text-white [text-shadow:_0_2px_12px_rgba(0,0,0,0.3)]">
-  {heroContent.headline}
-        </h1>
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-8 tracking-wide animate-fade-up">
           {heroContent.headline}
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 opacity-90 animate-fade-up animate-fade-up-delay-1">

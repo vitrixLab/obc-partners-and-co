@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -11,7 +10,6 @@ const config: Config = {
         graphite:'#2b2b2b',
         accent:  '#1a2634',
         muted:   '#6b6b6b',
-        'elegant-white': '#f5f5f0',
       },
       fontFamily: {
         serif: ['Playfair Display', 'Georgia', 'serif'],
@@ -21,4 +19,3 @@ const config: Config = {
   },
   plugins: [],
 };
-export default config;
