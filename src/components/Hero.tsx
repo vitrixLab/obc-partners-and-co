@@ -2,19 +2,33 @@ import { heroContent } from '@/data/content';
 
 export default function Hero() {
   return (
-    <section className="relative bg-blueprint min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Soft gradient overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />
-      
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Background image – replace with real photo later */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/hero-architecture.avif')" }}
+      >
+        {/* Ken Burns slow zoom (disabled for reduced motion) */}
+        <div className="motion-safe:animate-kenburns absolute inset-0" />
+      </div>
+
+      {/* Grain overlay */}
+      <div className="absolute inset-0 bg-grain opacity-30" />
+
+      {/* Dark gradient overlay for text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/70" />
+
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 text-center text-white">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-8 tracking-wide animate-fade-up">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-8 tracking-wide animate-fade-up text-white [text-shadow:_0_2px_12px_rgba(0,0,0,0.3)]">
+  {heroContent.headline}
+        </h1>
           {heroContent.headline}
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 opacity-90 animate-fade-up animate-fade-up-delay-1">
           {heroContent.subheadline}
         </p>
-        
+
         <div className="flex flex-col sm:flex-row gap-5 justify-center animate-fade-up animate-fade-up-delay-2">
           <a
             href="#contact"
@@ -29,7 +43,7 @@ export default function Hero() {
             {heroContent.secondaryCta}
           </a>
         </div>
-        
+
         <p className="mt-5 text-sm text-white/70 animate-fade-up animate-fade-up-delay-3">
           All consultations and briefs are free & fully confidential.
         </p>

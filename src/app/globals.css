@@ -15,9 +15,32 @@
     font-family: 'Playfair Display', Georgia, serif;
     color: #2b2b2b;
   }
+
+  /* Better focus indicators */
+  :focus-visible {
+    outline: 2px solid #1a2634;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
 
-/* ── Smooth scrolling & selection colour ──────── */
+/* ── Grain texture (used in hero) ──────────────── */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Ken Burns animation ──────────────────────── */
+@keyframes kenburns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+.motion-safe\:animate-kenburns {
+  animation: kenburns 20s ease-in-out infinite alternate;
+}
+
+/* ── Smooth scrolling & selection ─────────────── */
 html {
   scroll-behavior: smooth;
 }
@@ -26,7 +49,7 @@ html {
   color: #fff;
 }
 
-/* ── Thin scrollbar ──────────────────────────── */
+/* ── Thin scrollbar ───────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -37,8 +60,22 @@ html {
   background: #b0b0b0;
   border-radius: 3px;
 }
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
 
-/* ── Fade‑up animation ───────────────────────── */
+/* ── Reduced motion ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Fade‑up animation ────────────────────────── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -50,10 +87,10 @@ html {
 .animate-fade-up-delay-2 { animation-delay: 0.4s; }
 .animate-fade-up-delay-3 { animation-delay: 0.6s; }
 
-/* ── Hero blueprint grid pattern ─────────────── */
+/* ── Blueprint pattern (can keep for other sections) ── */
 .bg-blueprint {
   background-color: #1a2634;
-  background-image: 
+  background-image:
     linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
