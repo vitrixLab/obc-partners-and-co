@@ -1,12 +1,12 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { faqContent } from '@/data/content';
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  
+
   return (
-    <section className="py-32 bg-white">
+    <section id="faq" className="py-32 bg-white">
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-serif font-bold text-graphite mb-16 text-center">
           Frequently Asked Questions
@@ -16,10 +16,13 @@ export default function Faq() {
             <div key={idx} className="border border-stone/50 rounded-md overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                aria-expanded={openIndex === idx}
+                aria-controls={`faq-answer-${idx}`}
                 className="w-full flex justify-between items-center p-5 text-left font-medium text-graphite hover:bg-stone/20 transition-colors"
               >
                 <span>{item.question}</span>
                 <svg
+                  aria-hidden="true"
                   className={`w-5 h-5 transform transition-transform duration-300 ${openIndex === idx ? 'rotate-45' : ''}`}
                   fill="none"
                   stroke="currentColor"
@@ -29,6 +32,9 @@ export default function Faq() {
                 </svg>
               </button>
               <div
+                id={`faq-answer-${idx}`}
+                role="region"
+                aria-labelledby={`faq-question-${idx}`}  // optional: add id to button if you want, but not strictly required
                 className={`transition-all duration-300 ease-in-out ${
                   openIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
