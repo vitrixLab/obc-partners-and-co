@@ -50,7 +50,8 @@ export default function Benefits() {
         {/* Alternating Rows — Editorial Layout */}
         <div className="space-y-28 md:space-y-36">
           {benefits.map((b, idx) => {
-            const isEven = idx % 2 === 0;
+            const isEven = idx % 2 === 0;          // topic on left  → left‑align text
+            // const isOdd  = idx % 2 === 1;      // topic on right → right‑align text
 
             return (
               <div
@@ -77,14 +78,30 @@ export default function Benefits() {
                   </span>
                 </div>
 
-                {/* Content Column */}
-                <div className="flex-1 text-center md:text-left">
+                {/* Content Column — align text based on row */}
+                <div
+                  className={`flex-1 text-center ${
+                    isEven ? 'md:text-left' : 'md:text-right'
+                  }`}
+                >
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#1a1a1a] mb-5 tracking-tight">
                     {b.title}
                   </h3>
-                  {/* Thin ornamental rule under title — always left aligned */}
-                  <div className="w-12 h-[1px] bg-[#c4a962]/50 mb-6 mx-auto md:mx-0" />
-                  <p className="text-base md:text-lg text-[#6b6b6b] leading-relaxed max-w-lg mx-auto md:mx-0">
+                  {/* Thin ornamental rule — position accordingly */}
+                  <div
+                    className={`w-12 h-[1px] bg-[#c4a962]/50 mb-6 ${
+                      isEven
+                        ? 'mx-auto md:mx-0'
+                        : 'mx-auto md:mr-0 md:ml-auto'
+                    }`}
+                  />
+                  <p
+                    className={`text-base md:text-lg text-[#6b6b6b] leading-relaxed max-w-lg ${
+                      isEven
+                        ? 'mx-auto md:mx-0'
+                        : 'mx-auto md:mr-0 md:ml-auto'
+                    }`}
+                  >
                     {b.description}
                   </p>
                 </div>
